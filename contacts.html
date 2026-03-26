@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | Общага XXX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="pb-32 relative">
+    <div class="blob-bg"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+
+    <div class="theme-switch-wrapper md:top-6 md:right-6">
+        <label class="theme-switch" title="Переключить тему">
+            <input type="checkbox" id="theme-checkbox">
+            <div class="slider">
+                <span class="icon">☀️</span>
+                <span class="icon">🌙</span>
+            </div>
+        </label>
+    </div>
+
+    <main id="main-content" class="page-transition max-w-5xl mx-auto px-6 pt-16 space-y-12">
+        <h1 class="text-4xl md:text-5xl font-bold pl-4 tracking-tight text-slate-800">Контакты</h1>
+
+        <!-- Блок Контакты -->
+        <div class="liquid-card p-8 md:p-12">
+            <p class="text-slate-700 md:text-lg mb-8">По всем вопросам сначала обращайтесь на вахту. Это самый быстрый способ.</p>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 mb-8">
+                <!-- Карточка Вахты -->
+                <div class="bg-white/50 border border-white/60 p-6 md:p-8 rounded-[32px] shadow-sm">
+                    <p class="text-xs md:text-sm font-bold text-slate-400 mb-2 uppercase tracking-widest">Круглосуточно</p>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-800 mb-2">Вахта</h2>
+                    <a href="tel:244008" class="text-xl md:text-2xl text-blue-600 font-semibold hover:underline">24-40-08</a>
+                </div>
+
+                <!-- Карточка Администрации -->
+                <div class="bg-gradient-to-br from-blue-50/50 to-indigo-100/40 border border-white/60 p-6 md:p-8 rounded-[32px] shadow-sm">
+                    <p class="text-xs md:text-sm font-bold text-indigo-400 mb-2 uppercase tracking-widest">Помощник проректора</p>
+                    <h2 class="text-lg md:text-xl font-bold text-slate-800 mb-1">Лисина Мария Дмитриевна</h2>
+                    <p class="text-sm md:text-base text-slate-600 mb-5">Кабинет 145</p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="tel:+79201207484" class="px-4 py-2.5 bg-white/80 rounded-full text-sm font-semibold hover:bg-white transition shadow-sm">📞 8-920-120-74-84</a>
+                        <a href="https://vk.com/id143388842" target="_blank" class="px-4 py-2.5 bg-[#0077FF] text-white rounded-full text-sm font-semibold hover:bg-blue-600 transition shadow-md shadow-blue-500/20">ВКонтакте</a>
+                    </div>
+                </div>
+            </div>
+
+            <button class="expand-btn inline-flex items-center gap-2 bg-slate-200/50 text-slate-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-slate-200 cursor-pointer" data-target="text-contacts">Подробнее &darr;</button>
+            <div id="text-contacts" class="expandable-wrapper"><div class="expandable-content"><div class="expandable-inner bg-white/40 rounded-3xl p-6 mt-6 text-slate-700 shadow-inner text-sm md:text-base">
+                <p class="mb-3">По всем возникающим вопросам в первую очередь обращайтесь на вахту. Дежурный зафиксирует вашу проблему и направит к ответственному сотруднику. Это самый быстрый способ решить текущую ситуацию.</p>
+                <p>Контакты сотрудников предназначены для срочных случаев, когда вопрос требует немедленного вмешательства. Просьба звонить по ним в дневное время и только при действительной необходимости.</p>
+            </div></div></div>
+        </div>
+
+        <h2 class="text-2xl md:text-3xl font-bold pl-4">F.A.Q. (Частые вопросы)</h2>
+        <!-- Блоки FAQ -->
+        <div class="space-y-4">
+            <div class="bg-white/60 backdrop-blur-md border border-white/80 p-5 md:p-6 rounded-3xl shadow-sm hover:shadow-md transition duration-300">
+                <h3 class="font-bold text-base md:text-lg mb-2 text-slate-900 flex gap-3"><span class="text-blue-500">1.</span> До скольки можно шуметь?</h3>
+                <p class="text-sm md:text-base text-slate-700 pl-6">С 23:00 до 6:00 действует режим тишины. В это время нельзя шуметь.</p>
+            </div>
+            <div class="bg-white/60 backdrop-blur-md border border-white/80 p-5 md:p-6 rounded-3xl shadow-sm hover:shadow-md transition duration-300">
+                <h3 class="font-bold text-base md:text-lg mb-2 text-slate-900 flex gap-3"><span class="text-blue-500">2.</span> Где можно курить?</h3>
+                <p class="text-sm md:text-base text-slate-700 pl-6">Только за территорией общежития (за забором). Курение любых видов (включая электронные сигареты и IQOS) на территории запрещено.</p>
+            </div>
+            <div class="bg-white/60 backdrop-blur-md border border-white/80 p-5 md:p-6 rounded-3xl shadow-sm hover:shadow-md transition duration-300">
+                <h3 class="font-bold text-base md:text-lg mb-2 text-slate-900 flex gap-3"><span class="text-blue-500">3.</span> Где взять постельное бельё?</h3>
+                <p class="text-sm md:text-base text-slate-700 pl-6">При заезде вы получаете комплект под роспись. Замена белья – каждую среду у кастелянши (1 этаж, левое крыло).</p>
+            </div>
+            <div class="bg-white/60 backdrop-blur-md border border-white/80 p-5 md:p-6 rounded-3xl shadow-sm hover:shadow-md transition duration-300">
+                <h3 class="font-bold text-base md:text-lg mb-2 text-slate-900 flex gap-3"><span class="text-blue-500">4.</span> Что делать, если что-то сломалось?</h3>
+                <p class="text-sm md:text-base text-slate-700 pl-6">Сообщить на вахту. Дежурный запишет номер комнаты и ваши данные, сотрудники общежития устранят поломку.</p>
+            </div>
+            <div class="bg-white/60 backdrop-blur-md border border-white/80 p-5 md:p-6 rounded-3xl shadow-sm hover:shadow-md transition duration-300">
+                <h3 class="font-bold text-base md:text-lg mb-2 text-slate-900 flex gap-3"><span class="text-blue-500">5.</span> Где находится душ? Какие часы работы?</h3>
+                <p class="text-sm md:text-base text-slate-700 pl-6">Душ в подвале (левое крыло). Работает с 6:00 до 23:00, с 10:00 до 12:00 - санитарный час (уборка). После себя нужно убирать, личные вещи не оставлять.</p>
+            </div>
+            <div class="bg-white/60 backdrop-blur-md border border-white/80 p-5 md:p-6 rounded-3xl shadow-sm hover:shadow-md transition duration-300">
+                <h3 class="font-bold text-base md:text-lg mb-2 text-slate-900 flex gap-3"><span class="text-blue-500">6.</span> Как постирать вещи?</h3>
+                <p class="text-sm md:text-base text-slate-700 pl-6">В каждом блоке есть прачечная (стиралка, сушилка). Ключ берут на вахте под роспись и возвращают сразу после стирки.</p>
+            </div>
+            <div class="bg-white/60 backdrop-blur-md border border-white/80 p-5 md:p-6 rounded-3xl shadow-sm hover:shadow-md transition duration-300">
+                <h3 class="font-bold text-base md:text-lg mb-2 text-slate-900 flex gap-3"><span class="text-blue-500">7.</span> Что делать, если соседи нарушают тишину или правила?</h3>
+                <p class="text-sm md:text-base text-slate-700 pl-6">При нарушениях вы можете обратиться с жалобой к помощнику проректора (Лисиной М.Д., каб. 145).</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Navbar -->
+    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 liquid-nav p-2 md:px-4 md:py-3 flex items-center gap-2 w-max shadow-xl">
+        <a href="index.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">🏠</span><span class="hidden md:block">Главная</span></a>
+        <a href="rules.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">📜</span><span class="hidden md:block">Правила</span></a>
+        <a href="life.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">🚿</span><span class="hidden md:block">Быт</span></a>
+        <a href="schedule.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">🔑</span><span class="hidden md:block">Доступ</span></a>
+        <a href="contacts.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-semibold text-slate-700 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">📞</span><span class="hidden md:block">Контакты</span></a>
+    </nav>
+    <script src="script.js"></script>
+</body>
+</html>

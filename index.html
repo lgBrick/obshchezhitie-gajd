@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Общежитие ЯРГУ | Главная</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- Скрипт в HEAD предотвращает белую вспышку -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="pb-32 relative">
+    <div class="blob-bg"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+
+    <!-- Красивый тумблер темы -->
+    <div class="theme-switch-wrapper md:top-6 md:right-6">
+        <label class="theme-switch" title="Переключить тему">
+            <input type="checkbox" id="theme-checkbox">
+            <div class="slider">
+                <span class="icon">☀️</span>
+                <span class="icon">🌙</span>
+            </div>
+        </label>
+    </div>
+
+    <main id="main-content" class="page-transition max-w-5xl mx-auto px-6 pt-12 md:pt-20">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-center mb-3 md:mb-4 text-slate-800 drop-shadow-sm">Общежитие ЯРГУ</h1>
+        <p class="text-center text-base md:text-lg text-slate-600 mb-10 md:mb-16 font-medium">Твой цифровой гид по правилам и быту</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
+            <a href="rules.html" class="nav-card liquid-card p-6 md:p-10 flex flex-col items-center text-center group">
+                <div class="text-4xl md:text-5xl mb-3 md:mb-5 group-hover:scale-110 transition-transform duration-300">📜</div>
+                <h2 class="text-xl md:text-2xl font-bold mb-2 text-slate-800">Порядок и Правила</h2>
+                <p class="text-sm md:text-base text-slate-600">Тишина, гости, запреты и пожарная безопасность.</p>
+            </a>
+            <a href="life.html" class="nav-card liquid-card p-6 md:p-10 flex flex-col items-center text-center group">
+                <div class="text-4xl md:text-5xl mb-3 md:mb-5 group-hover:scale-110 transition-transform duration-300">🚿</div>
+                <h2 class="text-xl md:text-2xl font-bold mb-2 text-slate-800">Быт общежития</h2>
+                <p class="text-sm md:text-base text-slate-600">Душ, прачечная, кухня и интернет.</p>
+            </a>
+            <a href="schedule.html" class="nav-card liquid-card p-6 md:p-10 flex flex-col items-center text-center group">
+                <div class="text-4xl md:text-5xl mb-3 md:mb-5 group-hover:scale-110 transition-transform duration-300">🔑</div>
+                <h2 class="text-xl md:text-2xl font-bold mb-2 text-slate-800">Доступ и Режим</h2>
+                <p class="text-sm md:text-base text-slate-600">Пропуска, ключи и график работы служб.</p>
+            </a>
+            <a href="contacts.html" class="nav-card liquid-card p-6 md:p-10 flex flex-col items-center text-center group">
+                <div class="text-4xl md:text-5xl mb-3 md:mb-5 group-hover:scale-110 transition-transform duration-300">📞</div>
+                <h2 class="text-xl md:text-2xl font-bold mb-2 text-slate-800">Контакты & FAQ</h2>
+                <p class="text-sm md:text-base text-slate-600">Связь с вахтой, администрацией и частые вопросы.</p>
+            </a>
+        </div>
+    </main>
+
+    <!-- Floating Navbar -->
+    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 liquid-nav p-2 md:px-4 md:py-3 flex items-center gap-2 w-max shadow-xl">
+        <a href="index.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-semibold text-slate-700 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">🏠</span><span class="hidden md:block">Главная</span></a>
+        <a href="rules.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">📜</span><span class="hidden md:block">Правила</span></a>
+        <a href="life.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">🚿</span><span class="hidden md:block">Быт</span></a>
+        <a href="schedule.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">🔑</span><span class="hidden md:block">Доступ</span></a>
+        <a href="contacts.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">📞</span><span class="hidden md:block">Контакты</span></a>
+    </nav>
+    <script src="script.js"></script>
+</body>
+</html>

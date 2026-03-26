@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доступ | Общага XXX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="pb-32 relative">
+    <div class="blob-bg"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+
+    <div class="theme-switch-wrapper md:top-6 md:right-6">
+        <label class="theme-switch" title="Переключить тему">
+            <input type="checkbox" id="theme-checkbox">
+            <div class="slider">
+                <span class="icon">☀️</span>
+                <span class="icon">🌙</span>
+            </div>
+        </label>
+    </div>
+
+    <main id="main-content" class="page-transition max-w-4xl mx-auto px-6 pt-16 space-y-8">
+        <h1 class="text-4xl md:text-5xl font-bold mb-10 pl-4 tracking-tight text-slate-800">Доступ и Режим</h1>
+
+        <!-- Пропуск -->
+        <div class="liquid-card p-8 md:p-10">
+            <div class="flex flex-col md:flex-row md:items-center gap-6 mb-6">
+                <div class="w-20 h-20 flex-shrink-0 bg-blue-100/80 rounded-[28px] flex items-center justify-center text-4xl shadow-sm border border-blue-200">💳</div>
+                <div>
+                    <h2 class="text-2xl font-bold mb-2">Вход и Пропуск</h2>
+                    <p class="text-slate-700 md:text-lg">Вход 24/7 по пропуску. Оформление и замена утерянных пропусков — в Главном корпусе (Советская 14).</p>
+                </div>
+            </div>
+            <button class="expand-btn inline-flex items-center gap-2 bg-blue-100/50 text-blue-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-blue-100 cursor-pointer" data-target="text-pass">Подробнее &darr;</button>
+
+            <div id="text-pass" class="expandable-wrapper"><div class="expandable-content"><div class="expandable-inner bg-white/40 rounded-3xl p-6 mt-6 text-slate-700 shadow-inner space-y-3 text-sm md:text-base">
+                <p>Вход осуществляется круглосуточно по электронному пропуску. В ночное время дверь может быть закрыта; для входа необходимо позвонить в звонок - дежурный откроет дверь после проверки.</p>
+                <p>Если нет пропуска (потеряли/забыли) — обратитесь на вахту. Дежурный проверит факт проживания и выдаст запасной ключ.</p>
+                <p><strong>Оформление при заселении:</strong> в главном корпусе (ул. Советская, д. 14). На вахте пройдите направо в окно оформления.</p>
+                <p><strong>Потеря/Неисправность:</strong> Новый оформляется там же. Если пропуск перестал работать, позвоните по телефону 78-85-06 для дистанционной проверки. При необходимости потребуется приехать на перевыпуск. [Перепривязка пропуска]</p>
+            </div></div></div>
+        </div>
+
+        <!-- Ключ -->
+        <div class="liquid-card p-8 md:p-10">
+            <div class="flex flex-col md:flex-row md:items-center gap-6 mb-6">
+                <div class="w-20 h-20 flex-shrink-0 bg-amber-100/80 rounded-[28px] flex items-center justify-center text-4xl shadow-sm border border-amber-200">🔑</div>
+                <div>
+                    <h2 class="text-2xl font-bold mb-2">Ключ от комнаты</h2>
+                    <p class="text-slate-700 md:text-lg">Выдается при заселении в каб. 144. Дубликаты при потере делаются строго за свой счет.</p>
+                </div>
+            </div>
+            <button class="expand-btn inline-flex items-center gap-2 bg-amber-100/50 text-amber-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-amber-100 cursor-pointer" data-target="text-key">Подробнее &darr;</button>
+
+            <div id="text-key" class="expandable-wrapper"><div class="expandable-content"><div class="expandable-inner bg-white/40 rounded-3xl p-6 mt-6 text-slate-700 shadow-inner text-sm md:text-base">
+                <p class="mb-2">При заселении ключ от комнаты выдаётся в кабинете 144.</p>
+                <p>В случае потери ключа необходимо:</p>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li>обратиться в кабинет 144 для получения запасного ключа;</li>
+                    <li>сделать дубликат (за свой счёт).</li>
+                </ul>
+            </div></div></div>
+        </div>
+
+        <!-- График работы -->
+        <div class="liquid-card p-8 md:p-10">
+            <div class="flex flex-col md:flex-row md:items-center gap-6 mb-6">
+                <div class="w-20 h-20 flex-shrink-0 bg-emerald-100/80 rounded-[28px] flex items-center justify-center text-4xl shadow-sm border border-emerald-200">🕒</div>
+                <div>
+                    <h2 class="text-2xl font-bold mb-2">График работы служб</h2>
+                    <p class="text-slate-700 md:text-lg">Вахта работает круглосуточно. График приема администрации можно уточнить на вахте.</p>
+                </div>
+            </div>
+            <button class="expand-btn inline-flex items-center gap-2 bg-emerald-100/50 text-emerald-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-emerald-100 cursor-pointer" data-target="text-time">Подробнее &darr;</button>
+
+            <div id="text-time" class="expandable-wrapper"><div class="expandable-content"><div class="expandable-inner bg-white/40 rounded-3xl p-6 mt-6 text-slate-700 shadow-inner text-sm md:text-base">
+                <ul class="list-disc pl-5 space-y-3">
+                    <li><strong>Вахта:</strong> работает круглосуточно. Здесь можно решить оперативные вопросы, оставить заявку на ремонт.</li>
+                    <li><strong>Администрация:</strong> Заведующая и помощник проректора принимают по графику. Актуальное время приёма уточняйте на вахте.</li>
+                    <li><strong>Службы:</strong> Кастелянша и технические специалисты работают в часы, установленные администрацией. Актуальное время уточняйте на вахте.</li>
+                </ul>
+            </div></div></div>
+        </div>
+    </main>
+
+    <!-- Floating Navbar -->
+    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 liquid-nav p-2 md:px-4 md:py-3 flex items-center gap-2 w-max shadow-xl">
+        <a href="index.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">🏠</span><span class="hidden md:block">Главная</span></a>
+        <a href="rules.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">📜</span><span class="hidden md:block">Правила</span></a>
+        <a href="life.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">🚿</span><span class="hidden md:block">Быт</span></a>
+        <a href="schedule.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-semibold text-slate-700 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">🔑</span><span class="hidden md:block">Доступ</span></a>
+        <a href="contacts.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">📞</span><span class="hidden md:block">Контакты</span></a>
+    </nav>
+    <script src="script.js"></script>
+</body>
+</html>
