@@ -198,36 +198,32 @@ html.dark .slider:before {
 }
 
 /* =========================================
-   ИДЕАЛЬНАЯ СМЕНА ТЕМЫ (ПЛАВНАЯ И БЕЗ ЛАГОВ)
+   ОПТИМИЗАЦИЯ СМЕНЫ ТЕМЫ (ДЛЯ ТЕЛЕФОНОВ)
    ========================================= */
 
-/* 1. Анимируем только легкие свойства (цвета). Блокируем анимацию тяжелых теней у всех элементов */
-html.theme-transitioning,
+/* 1. Блокируем родные медленные анимации во время работы View API */
+html.view-transition-active *,
+html.view-transition-active *:before,
+html.view-transition-active *:after {
+    transition: none !important;
+}
+
+/* 2. Настройка плавности для современных браузеров (View Transitions API) */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.35s; /* Длительность растворения */
+    animation-timing-function: ease-in-out;
+}
+
+/* 3. Оптимизированный фоллбэк для старых телефонов (iOS < 18, старые Android).
+   Убрали селектор "*" и тяжелые тени. Анимируем только базовые цвета. */
 html.theme-transitioning body,
 html.theme-transitioning .blob-bg,
 html.theme-transitioning .blob,
 html.theme-transitioning .liquid-card,
 html.theme-transitioning .liquid-nav,
-html.theme-transitioning div:not(.slider),
-html.theme-transitioning p,
-html.theme-transitioning h1,
-html.theme-transitioning h2,
-html.theme-transitioning h3,
-html.theme-transitioning span:not(.icon),
-html.theme-transitioning a,
-html.theme-transitioning ul,
-html.theme-transitioning li,
-html.theme-transitioning button {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
-}
-
-/* 2. ИСКЛЮЧЕНИЕ: ВОЗВРАЩАЕМ ПЛАВНОСТЬ ТУМБЛЕРУ */
-/* Разрешаем кружку использовать его родную пружинистую анимацию и сдвиг (transform) */
-html.theme-transitioning .slider:before {
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
-}
-
-/* Разрешаем самому фону тумблера плавно менять тени и цвета */
-html.theme-transitioning .slider {
-    transition: all 0.5s ease !important;
+html.theme-transitioning [class*="bg-"],
+html.theme-transitioning [class*="text-"],
+html.theme-transitioning [class*="border-"] {
+    transition: background-color 0.25s linear, color 0.25s linear, border-color 0.25s linear, opacity 0.25s linear !important;
 }

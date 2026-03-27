@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navigateTo(url, false);
     });
 
+    // Логика Тумблера Тёмной темы
     // 5. Логика Тумблера Тёмной темы
     const themeCheckbox = document.getElementById('theme-checkbox');
     if (document.documentElement.classList.contains('dark') && themeCheckbox) {
@@ -135,21 +136,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (themeCheckbox) {
         themeCheckbox.addEventListener('change', function() {
-            // Включаем класс для оптимизированной анимации
-            document.documentElement.classList.add('theme-transitioning');
+            const isDark = this.checked;
 
-            if (this.checked) {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
+            // Функция мгновенной смены классов (без анимации)
+            const toggleTheme = () => {
+                if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                }
+            };
+
+            // Если браузер поддерживает современный View Transitions API (Chrome, новые Safari/iOS 18)
+            if (document.startViewTransition) {
+                // Отключаем конфликтующие CSS-анимации на время "скриншота"
+                document.documentElement.classList.add('view-transition-active');
+
+                const transition = document.startViewTransition(toggleTheme);
+
+                transition.finished.finally(() => {
+                    document.documentElement.classList.remove('view-transition-active');
+                });
             } else {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
+                // Фоллбэк для старых телефонов: легкая CSS-анимация без лагов
+                document.documentElement.classList.add('theme-transitioning');
+                toggleTheme();
+                setTimeout(() => {
+                    document.documentElement.classList.remove('theme-transitioning');
+                }, 250);
             }
-
-            // Ждем завершения анимации тумблера (500мс) и отключаем тяжелые пересчеты
-            setTimeout(() => {
-                document.documentElement.classList.remove('theme-transitioning');
-            }, 500);
         });
     }
 
