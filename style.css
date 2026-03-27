@@ -82,15 +82,7 @@ body {
 .expandable-wrapper.expanded { grid-template-rows: 1fr; }
 .expandable-content { overflow: hidden; }
 
-/* --- Оптимизированный переход темы --- */
-/* Этот класс добавляется скриптом только в момент клика на тумблер */
-html.theme-transitioning,
-html.theme-transitioning *,
-html.theme-transitioning *:before,
-html.theme-transitioning *:after {
-    transition: background-color 0.3s ease-out, color 0.3s ease-out, border-color 0.3s ease-out, box-shadow 0.3s ease-out, opacity 0.3s ease-out !important;
-    transition-delay: 0s !important;
-}
+
 /* =========================================
    ТЕМНАЯ ТЕМА (DARK MODE) - ПОЛНЫЙ РЕДИЗАЙН
    ========================================= */
@@ -203,4 +195,35 @@ html.dark .slider:before {
     transform: translateX(32px);
     background-color: #cbd5e1;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* =========================================
+   ОПТИМИЗАЦИЯ СМЕНЫ ТЕМЫ (ДЛЯ ТЕЛЕФОНОВ)
+   ========================================= */
+
+/* 1. Блокируем родные медленные анимации во время работы View API */
+html.view-transition-active *,
+html.view-transition-active *:before,
+html.view-transition-active *:after {
+    transition: none !important;
+}
+
+/* 2. Настройка плавности для современных браузеров (View Transitions API) */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.35s; /* Длительность растворения */
+    animation-timing-function: ease-in-out;
+}
+
+/* 3. Оптимизированный фоллбэк для старых телефонов (iOS < 18, старые Android).
+   Убрали селектор "*" и тяжелые тени. Анимируем только базовые цвета. */
+html.theme-transitioning body,
+html.theme-transitioning .blob-bg,
+html.theme-transitioning .blob,
+html.theme-transitioning .liquid-card,
+html.theme-transitioning .liquid-nav,
+html.theme-transitioning [class*="bg-"],
+html.theme-transitioning [class*="text-"],
+html.theme-transitioning [class*="border-"] {
+    transition: background-color 0.25s linear, color 0.25s linear, border-color 0.25s linear, opacity 0.25s linear !important;
 }

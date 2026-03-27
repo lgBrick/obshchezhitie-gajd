@@ -128,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Логика Тумблера Тёмной темы
+    // 5. Логика Тумблера Тёмной темы
     const themeCheckbox = document.getElementById('theme-checkbox');
     if (document.documentElement.classList.contains('dark') && themeCheckbox) {
         themeCheckbox.checked = true;
@@ -135,23 +136,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (themeCheckbox) {
         themeCheckbox.addEventListener('change', function() {
-            // 1. Включаем анимацию для всех элементов на странице
-            document.documentElement.classList.add('theme-transitioning');
+            const isDark = this.checked;
 
-            // 2. Меняем тему
-            if (this.checked) {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
+            // Функция мгновенной смены классов (без анимации)
+            const toggleTheme = () => {
+                if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                }
+            };
+
+            // Если браузер поддерживает современный View Transitions API (Chrome, новые Safari/iOS 18)
+            if (document.startViewTransition) {
+                // Отключаем конфликтующие CSS-анимации на время "скриншота"
+                document.documentElement.classList.add('view-transition-active');
+
+                const transition = document.startViewTransition(toggleTheme);
+
+                transition.finished.finally(() => {
+                    document.documentElement.classList.remove('view-transition-active');
+                });
             } else {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
+                // Фоллбэк для старых телефонов: легкая CSS-анимация без лагов
+                document.documentElement.classList.add('theme-transitioning');
+                toggleTheme();
+                setTimeout(() => {
+                    document.documentElement.classList.remove('theme-transitioning');
+                }, 250);
             }
-
-            // 3. Выключаем анимацию сразу после её завершения (300мс)
-            // Это освобождает процессор и убирает лаги при ховере кнопок
-            setTimeout(() => {
-                document.documentElement.classList.remove('theme-transitioning');
-            }, 300);
         });
     }
 
