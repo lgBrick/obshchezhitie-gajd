@@ -82,9 +82,15 @@ body {
 .expandable-wrapper.expanded { grid-template-rows: 1fr; }
 .expandable-content { overflow: hidden; }
 
-/* Все элементы, меняющие цвет, должны анимироваться */
-div, p, h1, h2, h3, span, ul, li, button, a { transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease; }
-
+/* --- Оптимизированный переход темы --- */
+/* Этот класс добавляется скриптом только в момент клика на тумблер */
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *:before,
+html.theme-transitioning *:after {
+    transition: background-color 0.3s ease-out, color 0.3s ease-out, border-color 0.3s ease-out, box-shadow 0.3s ease-out, opacity 0.3s ease-out !important;
+    transition-delay: 0s !important;
+}
 /* =========================================
    ТЕМНАЯ ТЕМА (DARK MODE) - ПОЛНЫЙ РЕДИЗАЙН
    ========================================= */

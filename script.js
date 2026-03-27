@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navigateTo(url, false);
     });
 
-    // Логика Тумблера Тёмной темы (вызывается один раз, так как тумблер вне <main>)
+    // Логика Тумблера Тёмной темы
     const themeCheckbox = document.getElementById('theme-checkbox');
     if (document.documentElement.classList.contains('dark') && themeCheckbox) {
         themeCheckbox.checked = true;
@@ -135,6 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (themeCheckbox) {
         themeCheckbox.addEventListener('change', function() {
+            // 1. Включаем анимацию для всех элементов на странице
+            document.documentElement.classList.add('theme-transitioning');
+
+            // 2. Меняем тему
             if (this.checked) {
                 document.documentElement.classList.add('dark');
                 localStorage.setItem('theme', 'dark');
@@ -142,6 +146,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.documentElement.classList.remove('dark');
                 localStorage.setItem('theme', 'light');
             }
+
+            // 3. Выключаем анимацию сразу после её завершения (300мс)
+            // Это освобождает процессор и убирает лаги при ховере кнопок
+            setTimeout(() => {
+                document.documentElement.classList.remove('theme-transitioning');
+            }, 300);
         });
     }
 
