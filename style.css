@@ -227,3 +227,11 @@ html.theme-transitioning [class*="text-"],
 html.theme-transitioning [class*="border-"] {
     transition: background-color 0.25s linear, color 0.25s linear, border-color 0.25s linear, opacity 0.25s linear !important;
 }
+
+/* Добавь это в блок фонов: */
+html.dark .bg-cyan-100\/50, html.dark .bg-cyan-100\/80 { background-color: rgba(8, 145, 178, 0.4) !important; border-color: rgba(6, 182, 212, 0.5) !important; }
+html.dark .bg-pink-100\/50, html.dark .bg-pink-100\/80 { background-color: rgba(190, 24, 93, 0.4) !important; border-color: rgba(225, 29, 72, 0.5) !important; }
+
+/* Добавь это в блок текстов: */
+html.dark .text-cyan-700 { color: #67e8f9 !important; }
+html.dark .text-pink-700 { color: #f9a8d4 !important; }
