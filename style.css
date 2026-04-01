@@ -2,29 +2,21 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    /* Чуть затемненный фон для светлой темы */
     background-color: #e2e8f0;
     color: #1e293b;
     overflow-x: hidden;
     min-height: 100vh;
-    /* Плавная анимация смены темы для всего */
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* --- Анимированный фон (Blobs) --- */
 .blob-bg {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    z-index: -1;
-    overflow: hidden;
-    background: #e2e8f0; /* Чуть затемненный фон */
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1; overflow: hidden; background: #e2e8f0;
     transition: background-color 0.5s ease;
 }
 .blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.6;
+    position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6;
     animation: float 15s infinite ease-in-out alternate;
     transition: background-color 0.5s ease, opacity 0.5s ease;
 }
@@ -39,33 +31,23 @@ body {
 
 /* --- Эффект Liquid Glass --- */
 .liquid-card {
-    position: relative;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
+    position: relative; background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
     border-radius: 40px 35px 42px 38px;
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.7),
-        inset 0 20px 40px rgba(255, 255, 255, 0.3),
-        0 10px 40px -10px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), inset 0 20px 40px rgba(255, 255, 255, 0.3), 0 10px 40px -10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
 }
-
 .liquid-card:hover { transform: translateY(-5px) scale(1.01); }
-
 .liquid-card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 30%;
     background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%);
-    pointer-events: none; border-radius: inherit;
-    transition: opacity 0.5s ease;
+    pointer-events: none; border-radius: inherit; transition: opacity 0.5s ease;
 }
 
 /* --- Плавающее меню --- */
 .liquid-nav {
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
+    background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
     border-radius: 100px;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6), inset 0 10px 20px rgba(255, 255, 255, 0.3), 0 20px 40px rgba(0, 0, 0, 0.15);
     transition: background-color 0.5s ease, box-shadow 0.5s ease;
@@ -76,55 +58,30 @@ body {
 /* --- Плавные переходы страниц --- */
 .page-transition { opacity: 0; transform: translateY(15px); transition: opacity 0.25s ease-out, transform 0.25s ease-out; }
 .page-loaded { opacity: 1; transform: translateY(0); }
-
-/* --- Механика раскрывающихся блоков --- */
 .expandable-wrapper { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
 .expandable-wrapper.expanded { grid-template-rows: 1fr; }
 .expandable-content { overflow: hidden; }
 
-
-/* =========================================
-   ТЕМНАЯ ТЕМА (DARK MODE) - ПОЛНЫЙ РЕДИЗАЙН
-   ========================================= */
+/* --- ТЕМНАЯ ТЕМА --- */
 html.dark body { background-color: #0b1120; color: #f8fafc; }
 html.dark .blob-bg { background: #0b1120; }
 html.dark .blob-1 { background: #4c1d95; opacity: 0.2; }
 html.dark .blob-2 { background: #1e3a8a; opacity: 0.2; }
 html.dark .blob-3 { background: #831843; opacity: 0.2; }
-
-/* Главные карточки */
-html.dark .liquid-card {
-    background: rgba(30, 41, 59, 0.6);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03), inset 0 20px 40px rgba(255, 255, 255, 0.01), 0 10px 40px -10px rgba(0, 0, 0, 0.5);
-}
+html.dark .liquid-card { background: rgba(30, 41, 59, 0.6); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03), inset 0 20px 40px rgba(255, 255, 255, 0.01), 0 10px 40px -10px rgba(0, 0, 0, 0.5); }
 html.dark .liquid-card::before { opacity: 0.05; }
-
-/* Нижнее меню */
-html.dark .liquid-nav {
-    background: rgba(15, 23, 42, 0.85);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 20px 40px rgba(0, 0, 0, 0.8);
-}
+html.dark .liquid-nav { background: rgba(15, 23, 42, 0.85); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 20px 40px rgba(0, 0, 0, 0.8); }
 html.dark .nav-link.active { background: rgba(51, 65, 85, 0.8); color: #fff; }
-
-/* Тексты */
 html.dark .text-slate-900, html.dark .text-slate-800 { color: #f8fafc !important; }
 html.dark .text-slate-700 { color: #cbd5e1 !important; }
 html.dark .text-slate-600 { color: #94a3b8 !important; }
 html.dark .text-slate-500 { color: #64748b !important; }
-
-/* Внутренние блоки (убираем белую грязь, делаем глубокий темный) */
-html.dark .expandable-inner, html.dark .bg-white\/30, html.dark .bg-white\/40, html.dark .bg-white\/50, html.dark .bg-white\/60, html.dark .bg-white\/80 {
-    background-color: rgba(15, 23, 42, 0.5) !important;
-    border-color: rgba(255, 255, 255, 0.03) !important;
-    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3) !important; /* Темная внутренняя тень вместо белой */
-}
-html.dark .border-white, html.dark .border-white\/60, html.dark .border-white\/80, html.dark .border-slate-300 {
-    border-color: rgba(255, 255, 255, 0.05) !important;
-}
+html.dark .expandable-inner, html.dark .bg-white\/30, html.dark .bg-white\/40, html.dark .bg-white\/50, html.dark .bg-white\/60, html.dark .bg-white\/80 { background-color: rgba(15, 23, 42, 0.5) !important; border-color: rgba(255, 255, 255, 0.03) !important; box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3) !important; }
+html.dark .border-white, html.dark .border-white\/60, html.dark .border-white\/80, html.dark .border-slate-300 { border-color: rgba(255, 255, 255, 0.05) !important; }
 html.dark .bg-gradient-to-br { background-image: none !important; background-color: rgba(15, 23, 42, 0.3) !important; }
 html.dark .shadow-sm { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important; }
 
-/* Иконки и акцентные плашки (темные фоны + яркие рамки/текст) */
+/* Цвета плашек */
 html.dark .bg-indigo-100\/50, html.dark .bg-indigo-100\/60, html.dark .bg-indigo-100\/80, html.dark .bg-blue-50\/50 { background-color: rgba(49, 46, 129, 0.4) !important; border-color: rgba(67, 56, 202, 0.5) !important; }
 html.dark .bg-rose-100\/50, html.dark .bg-rose-100\/80, html.dark .bg-rose-50\/60 { background-color: rgba(136, 19, 55, 0.4) !important; border-color: rgba(190, 18, 60, 0.5) !important; }
 html.dark .bg-blue-100\/50, html.dark .bg-blue-100\/80 { background-color: rgba(30, 58, 138, 0.4) !important; border-color: rgba(29, 78, 216, 0.5) !important; }
@@ -135,8 +92,9 @@ html.dark .bg-orange-100\/60 { background-color: rgba(124, 45, 18, 0.4) !importa
 html.dark .bg-amber-100\/50, html.dark .bg-amber-100\/80 { background-color: rgba(120, 53, 15, 0.4) !important; border-color: rgba(180, 83, 9, 0.5) !important; }
 html.dark .bg-emerald-100\/50, html.dark .bg-emerald-100\/80 { background-color: rgba(6, 78, 59, 0.4) !important; border-color: rgba(4, 120, 87, 0.5) !important; }
 html.dark .bg-slate-200\/50, html.dark .bg-slate-200\/80 { background-color: rgba(30, 41, 59, 0.6) !important; border-color: rgba(71, 85, 105, 0.5) !important; }
+html.dark .bg-cyan-100\/50, html.dark .bg-cyan-100\/80 { background-color: rgba(8, 145, 178, 0.4) !important; border-color: rgba(6, 182, 212, 0.5) !important; }
 
-/* Тексты на цветных элементах */
+/* Тексты плашек */
 html.dark .text-indigo-700 { color: #a5b4fc !important; }
 html.dark .text-rose-700, html.dark .text-rose-600 { color: #fca5a5 !important; }
 html.dark .text-blue-700, html.dark .text-blue-600 { color: #93c5fd !important; }
@@ -146,92 +104,28 @@ html.dark .text-purple-700, html.dark .text-purple-600 { color: #d8b4fe !importa
 html.dark .text-orange-700, html.dark .text-orange-600 { color: #fdba74 !important; }
 html.dark .text-amber-700 { color: #fcd34d !important; }
 html.dark .text-emerald-700 { color: #6ee7b7 !important; }
+html.dark .text-cyan-700 { color: #67e8f9 !important; }
 
-/* --- КРАСИВЫЙ ТУМБЛЕР (THEME SWITCH) --- */
-.theme-switch-wrapper {
-    position: fixed;
-    top: 1.5rem;
-    right: 1.5rem;
-    z-index: 50;
-}
-.theme-switch {
-    display: inline-block;
-    height: 34px;
-    width: 66px;
-    position: relative;
-}
+/* --- ТУМБЛЕР ТЕМЫ --- */
+.theme-switch { display: inline-block; height: 34px; width: 66px; position: relative; }
 .theme-switch input { display: none; }
-.slider {
-    position: absolute; cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    transition: 0.5s;
-    border-radius: 34px;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05), 0 4px 10px rgba(0,0,0,0.1);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 6px;
-}
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.8); transition: 0.5s; border-radius: 34px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05), 0 4px 10px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: space-between; padding: 0 6px; }
 .slider .icon { font-size: 14px; z-index: 1; user-select: none; }
-.slider:before {
-    position: absolute; content: "";
-    height: 26px; width: 26px;
-    left: 3px; bottom: 3px;
-    background-color: white;
-    transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Пружинистая анимация */
-    border-radius: 50%;
-    z-index: 2;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
+.slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 3px; bottom: 3px; background-color: white; transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); border-radius: 50%; z-index: 2; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+html.dark .slider { background-color: rgba(15, 23, 42, 0.8); border-color: rgba(255, 255, 255, 0.1); box-shadow: inset 0 2px 6px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.3); }
+html.dark .slider:before { transform: translateX(32px); background-color: #cbd5e1; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
 
-/* Состояние тумблера в темной теме */
-html.dark .slider {
-    background-color: rgba(15, 23, 42, 0.8);
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: inset 0 2px 6px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.3);
-}
-html.dark .slider:before {
-    transform: translateX(32px);
-    background-color: #cbd5e1;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-}
+/* --- ОПТИМИЗАЦИЯ ТЕМЫ --- */
+html.view-transition-active *, html.view-transition-active *:before, html.view-transition-active *:after { transition: none !important; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.35s; animation-timing-function: ease-in-out; }
+html.theme-transitioning body, html.theme-transitioning .blob-bg, html.theme-transitioning .blob, html.theme-transitioning .liquid-card, html.theme-transitioning .liquid-nav, html.theme-transitioning [class*="bg-"], html.theme-transitioning [class*="text-"], html.theme-transitioning [class*="border-"] { transition: background-color 0.25s linear, color 0.25s linear, border-color 0.25s linear, opacity 0.25s linear !important; }
 
 /* =========================================
-   ОПТИМИЗАЦИЯ СМЕНЫ ТЕМЫ (ДЛЯ ТЕЛЕФОНОВ)
+   МУЛЬТИЯЗЫЧНОСТЬ (RU / EN)
    ========================================= */
-
-/* 1. Блокируем родные медленные анимации во время работы View API */
-html.view-transition-active *,
-html.view-transition-active *:before,
-html.view-transition-active *:after {
-    transition: none !important;
-}
-
-/* 2. Настройка плавности для современных браузеров (View Transitions API) */
-::view-transition-old(root),
-::view-transition-new(root) {
-    animation-duration: 0.35s; /* Длительность растворения */
-    animation-timing-function: ease-in-out;
-}
-
-/* 3. Оптимизированный фоллбэк для старых телефонов (iOS < 18, старые Android).
-   Убрали селектор "*" и тяжелые тени. Анимируем только базовые цвета. */
-html.theme-transitioning body,
-html.theme-transitioning .blob-bg,
-html.theme-transitioning .blob,
-html.theme-transitioning .liquid-card,
-html.theme-transitioning .liquid-nav,
-html.theme-transitioning [class*="bg-"],
-html.theme-transitioning [class*="text-"],
-html.theme-transitioning [class*="border-"] {
-    transition: background-color 0.25s linear, color 0.25s linear, border-color 0.25s linear, opacity 0.25s linear !important;
-}
-
-/* Добавь это в блок фонов: */
-html.dark .bg-cyan-100\/50, html.dark .bg-cyan-100\/80 { background-color: rgba(8, 145, 178, 0.4) !important; border-color: rgba(6, 182, 212, 0.5) !important; }
-html.dark .bg-pink-100\/50, html.dark .bg-pink-100\/80 { background-color: rgba(190, 24, 93, 0.4) !important; border-color: rgba(225, 29, 72, 0.5) !important; }
-
-/* Добавь это в блок текстов: */
-html.dark .text-cyan-700 { color: #67e8f9 !important; }
-html.dark .text-pink-700 { color: #f9a8d4 !important; }
+[data-lang="en"] { display: none; }
+body.lang-en [data-lang="ru"] { display: none !important; }
+body.lang-en [data-lang="en"] { display: inline; }
+body.lang-en div[data-lang="en"], body.lang-en p[data-lang="en"], body.lang-en ul[data-lang="en"], body.lang-en ol[data-lang="en"], body.lang-en li[data-lang="en"] { display: block; }
+body.lang-en flex[data-lang="en"] { display: flex; }
+--- END OF FILE style.css ---

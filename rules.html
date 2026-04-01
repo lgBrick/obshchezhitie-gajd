@@ -8,113 +8,125 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <script>
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
+        else document.documentElement.classList.remove('dark');
+        if (localStorage.getItem('lang') === 'en') document.write('<style>body { visibility: hidden; }</style><script>document.addEventListener("DOMContentLoaded", ()=>document.body.style.visibility="visible");</scr'+'ipt>');
     </script>
 </head>
 <body class="pb-32 relative">
     <div class="blob-bg"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
 
-    <div class="theme-switch-wrapper md:top-6 md:right-6">
-        <label class="theme-switch" title="Переключить тему">
+    <div class="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-3">
+        <button id="lang-toggle" class="flex items-center justify-center w-[40px] h-[34px] rounded-full bg-white/50 dark:bg-slate-800/80 backdrop-blur-md border border-white/80 dark:border-white/10 shadow-sm text-sm font-bold text-slate-700 dark:text-slate-200 transition-transform hover:scale-105">EN</button>
+        <label class="theme-switch" title="Toggle theme">
             <input type="checkbox" id="theme-checkbox">
-            <div class="slider">
-                <span class="icon">☀️</span>
-                <span class="icon">🌙</span>
-            </div>
+            <div class="slider"><span class="icon">☀️</span><span class="icon">🌙</span></div>
         </label>
     </div>
 
     <main id="main-content" class="page-transition max-w-5xl mx-auto px-6 pt-16 space-y-10">
-        <h1 class="text-4xl md:text-5xl font-bold mb-10 pl-4 tracking-tight text-slate-800">Порядок и Правила</h1>
+        <h1 class="text-4xl md:text-5xl font-bold mb-10 pl-4 tracking-tight text-slate-800"><span data-lang="ru">Порядок и Правила</span><span data-lang="en">Rules & Regulations</span></h1>
 
         <div class="liquid-card p-8 md:p-12">
             <div class="flex items-center gap-4 mb-6">
                 <div class="p-3 bg-indigo-100/60 rounded-2xl text-2xl">🌙</div>
-                <h2 class="text-3xl font-bold">Часы тишины</h2>
+                <h2 class="text-3xl font-bold"><span data-lang="ru">Часы тишины</span><span data-lang="en">Quiet Hours</span></h2>
             </div>
             <div>
-                <p class="text-lg text-slate-700 mb-6 leading-relaxed">Режим тишины действует с <strong class="text-indigo-600">23:00 до 06:00</strong>. Шуметь, слушать музыку и делать ремонт запрещено.</p>
+                <p class="text-lg text-slate-700 mb-6 leading-relaxed">
+                    <span data-lang="ru">Режим тишины действует с <strong class="text-indigo-600">23:00 до 06:00</strong>. Шуметь, слушать музыку и делать ремонт запрещено.</span>
+                    <span data-lang="en">Quiet hours are from <strong class="text-indigo-600">23:00 to 06:00</strong>. No noise, music, or repairs allowed.</span>
+                </p>
                 <div class="bg-white/40 border border-white/60 p-5 rounded-3xl mb-6 shadow-sm inline-block">
-                    <p class="text-sm font-bold uppercase tracking-wider text-slate-500 mb-1">Помощь при нарушениях</p>
-                    <p class="text-slate-800 font-medium">Кабинет 145, Лисина Мария Дмитриевна или во <a href="https://vk.com/id143388842" target="_blank" class="text-blue-600 font-semibold hover:underline">ВКонтакте</a></p>
+                    <p class="text-sm font-bold uppercase tracking-wider text-slate-500 mb-1"><span data-lang="ru">Помощь при нарушениях</span><span data-lang="en">Help with violations</span></p>
+                    <p class="text-slate-800 font-medium"><span data-lang="ru">Кабинет 145, Лисина М.Д. или во</span><span data-lang="en">Room 145, Lisina M.D. or on</span> <a href="https://vk.com/id143388842" target="_blank" class="text-blue-600 font-semibold hover:underline">VKontakte</a></p>
                 </div>
                 <br>
-                <button class="expand-btn inline-flex items-center gap-2 bg-indigo-100/50 text-indigo-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-indigo-100 cursor-pointer transition" data-target="text-silence">Подробнее &darr;</button>
+                <button class="expand-btn inline-flex items-center gap-2 bg-indigo-100/50 text-indigo-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-indigo-100 cursor-pointer transition" data-target="text-silence"><span data-lang="ru">Подробнее &darr;</span><span data-lang="en">Read more &darr;</span></button>
             </div>
 
             <div id="text-silence" class="expandable-wrapper"><div class="expandable-content"><div class="expandable-inner bg-white/40 rounded-3xl p-6 mt-6 text-slate-700 leading-relaxed shadow-inner text-sm md:text-base">
-                <p class="mb-3">В нашем общежитии, как и на всей территории Ярославской области, установлен период тишины с 23:00 до 6:00. В это время запрещается шуметь, громко слушать музыку, играть на музыкальных инструментах, делать ремонт и производить иные действия, нарушающие тишину и покой соседей.</p>
-                <p>При систематических нарушениях вы можете обратиться с жалобой к помощнику проректора по вопросам общежития Лисиной Марии Дмитриевне, кабинет 145, 1 этаж, Правое крыло.</p>
+                <div data-lang="ru">
+                    <p class="mb-3">В нашем общежитии, как и на всей территории Ярославской области, установлен период тишины с 23:00 до 6:00. В это время запрещается шуметь, громко слушать музыку, играть на музыкальных инструментах, делать ремонт и производить иные действия, нарушающие тишину и покой соседей.</p>
+                    <p>При систематических нарушениях вы можете обратиться с жалобой к помощнику проректора по вопросам общежития Лисиной М.Д., кабинет 145, 1 этаж, Правое крыло.</p>
+                </div>
+                <div data-lang="en">
+                    <p class="mb-3">Quiet hours are established from 23:00 to 06:00. During this time, it is strictly forbidden to make noise, play loud music, play musical instruments, do repair work, or perform other actions that disturb neighbors.</p>
+                    <p>For systematic violations, you can file a complaint with the Vice-Rector's Assistant, Lisina M.D., Room 145, 1st floor, Right wing.</p>
+                </div>
             </div></div></div>
         </div>
 
         <div class="liquid-card p-8 md:p-12 bg-gradient-to-br from-white/20 to-blue-50/30">
-            <h2 class="text-3xl font-bold mb-8">Визиты и гости</h2>
+            <h2 class="text-3xl font-bold mb-8"><span data-lang="ru">Визиты и гости</span><span data-lang="en">Visits & Guests</span></h2>
             <div class="grid md:grid-cols-3 gap-6 mb-8">
                 <div class="bg-white/50 p-6 rounded-3xl text-center shadow-sm border border-white/60">
                     <div class="w-14 h-14 bg-blue-100/80 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-600 font-bold text-2xl">1</div>
-                    <p class="text-sm font-medium text-slate-700">Напиши в ВК Лисиной М.Д. для оформления допуска.</p>
+                    <p class="text-sm font-medium text-slate-700"><span data-lang="ru">Напиши в ВК Лисиной М.Д. для допуска.</span><span data-lang="en">Message Lisina M.D. on VK for permission.</span></p>
                 </div>
                 <div class="bg-white/50 p-6 rounded-3xl text-center shadow-sm border border-white/60">
                     <div class="w-14 h-14 bg-blue-100/80 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-600 font-bold text-2xl">2</div>
-                    <p class="text-sm font-medium text-slate-700">Дождись ответа с подтверждением.</p>
+                    <p class="text-sm font-medium text-slate-700"><span data-lang="ru">Дождись ответа с подтверждением.</span><span data-lang="en">Wait for a confirmation reply.</span></p>
                 </div>
                 <div class="bg-white/50 p-6 rounded-3xl text-center shadow-sm border border-white/60">
                     <div class="w-14 h-14 bg-blue-100/80 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-600 font-bold text-2xl">3</div>
-                    <p class="text-sm font-medium text-slate-700">Гость берет оригинал паспорта на вахту.</p>
+                    <p class="text-sm font-medium text-slate-700"><span data-lang="ru">Гость берет оригинал паспорта на вахту.</span><span data-lang="en">Guest brings original passport to reception.</span></p>
                 </div>
             </div>
             <div class="flex flex-wrap items-center gap-4">
-                <a href="https://vk.com/id143388842" target="_blank" class="inline-flex items-center gap-2 bg-[#0077FF] text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-blue-600 transition shadow-lg shadow-blue-500/30 cursor-pointer">
-                    ВКонтакте (Лисина М.Д.)
-                </a>
-                <button class="expand-btn inline-flex items-center gap-2 bg-blue-100/50 text-blue-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-blue-100 transition cursor-pointer" data-target="text-guests">Подробнее &darr;</button>
+                <a href="https://vk.com/id143388842" target="_blank" class="inline-flex items-center gap-2 bg-[#0077FF] text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-blue-600 transition shadow-lg shadow-blue-500/30 cursor-pointer">VKontakte</a>
+                <button class="expand-btn inline-flex items-center gap-2 bg-blue-100/50 text-blue-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-blue-100 transition cursor-pointer" data-target="text-guests"><span data-lang="ru">Подробнее &darr;</span><span data-lang="en">Read more &darr;</span></button>
             </div>
 
             <div id="text-guests" class="expandable-wrapper"><div class="expandable-content"><div class="expandable-inner bg-white/40 rounded-3xl p-6 mt-6 text-slate-700 leading-relaxed shadow-inner text-sm md:text-base">
-                <p class="mb-3">Приглашать гостей в общежитие можно, но только после получения письменного разрешения. Для этого необходимо:</p>
-                <ol class="list-decimal pl-5 space-y-2 mb-3">
-                    <li>Написать сообщение помощнику проректора по воспитательной работе и молодежной политике Лисиной М.Д. в социальной сети «ВКонтакте». Нужно отослать причину прихода, время, полные паспортны данные(серия, номер, кем выдан, дата выдачи, номер подразделения выдавшего паспорт)</li>
-                    <li>Дождаться ответа с подтверждением допуска.</li>
-                    <li>В назначенный день гость обязан иметь при себе паспорт. На вахте проверят соответствие данных паспорта сведениям, указанным в допуске, и дату визита.</li>
-                </ol>
-                <p class="font-medium text-blue-800">Обратите внимание: допуск оформляется на конкретную дату и время.</p>
+                <div data-lang="ru">
+                    <p class="mb-3">Приглашать гостей можно только после письменного разрешения. Необходимо:</p>
+                    <ol class="list-decimal pl-5 space-y-2 mb-3">
+                        <li>Написать Лисиной М.Д. в «ВКонтакте»: причину прихода, время, полные паспортные данные гостя.</li>
+                        <li>Дождаться ответа с подтверждением.</li>
+                        <li>В назначенный день гость обязан иметь при себе паспорт для проверки на вахте.</li>
+                    </ol>
+                    <p class="font-medium text-blue-800">Допуск оформляется на конкретную дату и время.</p>
+                </div>
+                <div data-lang="en">
+                    <p class="mb-3">Inviting guests is allowed only after written permission. You must:</p>
+                    <ol class="list-decimal pl-5 space-y-2 mb-3">
+                        <li>Message Lisina M.D. on VK: state the reason, time, and full passport details of the guest.</li>
+                        <li>Wait for confirmation.</li>
+                        <li>The guest must bring their original passport for verification at the reception.</li>
+                    </ol>
+                    <p class="font-medium text-blue-800">Permission is granted for a specific date and time.</p>
+                </div>
             </div></div></div>
         </div>
 
         <div class="grid md:grid-cols-2 gap-8 items-stretch">
-
             <div class="liquid-card p-8 md:p-10">
                 <div class="flex items-center gap-4 mb-6">
                     <div class="w-14 h-14 bg-rose-100/80 rounded-[20px] flex items-center justify-center text-2xl shadow-sm border border-rose-200">🚫</div>
-                    <h2 class="text-2xl font-bold text-rose-600">Запрещено</h2>
+                    <h2 class="text-2xl font-bold text-rose-600"><span data-lang="ru">Запрещено</span><span data-lang="en">Prohibited</span></h2>
                 </div>
-
                 <ul class="space-y-3 text-slate-700 mb-6 font-medium">
-                    <li class="flex items-center gap-2"><span class="text-rose-500 text-xl">×</span> Оружие</li>
-                    <li class="flex items-center gap-2"><span class="text-rose-500 text-xl">×</span> Наркотики и Алкоголь</li>
-                    <li class="flex items-center gap-2"><span class="text-rose-500 text-xl">×</span> Кальяны</li>
+                    <li class="flex items-center gap-2"><span class="text-rose-500 text-xl">×</span> <span data-lang="ru">Оружие</span><span data-lang="en">Weapons</span></li>
+                    <li class="flex items-center gap-2"><span class="text-rose-500 text-xl">×</span> <span data-lang="ru">Наркотики и Алкоголь</span><span data-lang="en">Drugs & Alcohol</span></li>
+                    <li class="flex items-center gap-2"><span class="text-rose-500 text-xl">×</span> <span data-lang="ru">Кальяны</span><span data-lang="en">Hookahs</span></li>
                 </ul>
                 <div class="bg-rose-50/60 border border-rose-100 p-4 rounded-3xl text-sm text-slate-800 mb-6">
-                    <strong>Животные:</strong> Содержание любых домашних животных запрещено.
+                    <span data-lang="ru"><strong>Животные:</strong> Содержание любых животных запрещено.</span><span data-lang="en"><strong>Pets:</strong> Keeping any pets is strictly forbidden.</span>
                 </div>
-
-                <button class="expand-btn inline-flex items-center gap-2 bg-rose-100/50 text-rose-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-rose-100 transition cursor-pointer" data-target="text-zero">Подробнее &darr;</button>
+                <button class="expand-btn inline-flex items-center gap-2 bg-rose-100/50 text-rose-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-rose-100 transition cursor-pointer" data-target="text-zero"><span data-lang="ru">Подробнее &darr;</span><span data-lang="en">Read more &darr;</span></button>
 
                 <div id="text-zero" class="expandable-wrapper"><div class="expandable-content"><div class="expandable-inner bg-white/40 rounded-3xl p-5 mt-5 text-slate-700 shadow-inner text-sm">
-                    <p class="mb-2">В общежитии категорически запрещается хранение и использование:</p>
-                    <ul class="list-disc pl-5 space-y-1 mb-3">
-                        <li>Любого оружия и боеприпасов</li>
-                        <li>Наркотических средств и психотропных веществ</li>
-                        <li>Алкогольных напитков</li>
-                        <li>Кальянов и иных приспособлений для курения табака или его заменителей</li>
-                        <li>Легковоспламеняющихся и взрывчатых веществ</li>
-                    </ul>
-                    <p><strong>Животные:</strong> Содержание домашних животных (кошек, собак, грызунов, птиц и так далее) в стенах нашего общежития запрещено.</p>
+                    <div data-lang="ru">
+                        <p class="mb-2">Категорически запрещается хранение и использование:</p>
+                        <ul class="list-disc pl-5 space-y-1 mb-3"><li>Оружия и боеприпасов</li><li>Наркотиков</li><li>Алкоголя</li><li>Кальянов</li><li>Взрывчатых веществ</li></ul>
+                        <p>Содержание домашних животных в стенах общежития запрещено.</p>
+                    </div>
+                    <div data-lang="en">
+                        <p class="mb-2">It is strictly forbidden to store or use:</p>
+                        <ul class="list-disc pl-5 space-y-1 mb-3"><li>Weapons and ammo</li><li>Drugs</li><li>Alcohol</li><li>Hookahs</li><li>Explosives</li></ul>
+                        <p>Keeping any pets inside the dormitory is strictly forbidden.</p>
+                    </div>
                 </div></div></div>
             </div>
 
@@ -122,23 +134,26 @@
                 <div class="flex items-center gap-4 mb-6">
                     <div class="w-14 h-14 bg-slate-200/80 rounded-[20px] flex items-center justify-center text-2xl shadow-sm border border-slate-300">🚬</div>
                     <div>
-                        <h2 class="text-2xl font-bold mb-1">Курение</h2>
-                        <span class="inline-block bg-slate-200/50 border border-slate-300 text-[10px] px-2 py-1 rounded-full text-slate-600 font-bold uppercase tracking-wider">Только за забором</span>
+                        <h2 class="text-2xl font-bold mb-1"><span data-lang="ru">Курение</span><span data-lang="en">Smoking</span></h2>
+                        <span class="inline-block bg-slate-200/50 border border-slate-300 text-[10px] px-2 py-1 rounded-full text-slate-600 font-bold uppercase tracking-wider"><span data-lang="ru">Только за забором</span><span data-lang="en">Only outside the fence</span></span>
                     </div>
                 </div>
-
-                <p class="text-slate-700 mb-6 font-medium">Запрещено везде внутри (включая электронки и балконы). Курить можно только за территорией общежития.</p>
-
-                <button class="expand-btn inline-flex items-center gap-2 bg-slate-200/50 text-slate-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-slate-200 transition cursor-pointer" data-target="text-smoke">Подробнее &darr;</button>
+                <p class="text-slate-700 mb-6 font-medium"><span data-lang="ru">Запрещено везде внутри. Курить можно только за территорией.</span><span data-lang="en">Prohibited everywhere inside. Smoking is allowed only outside the territory.</span></p>
+                <button class="expand-btn inline-flex items-center gap-2 bg-slate-200/50 text-slate-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-slate-200 transition cursor-pointer" data-target="text-smoke"><span data-lang="ru">Подробнее &darr;</span><span data-lang="en">Read more &darr;</span></button>
 
                 <div id="text-smoke" class="expandable-wrapper"><div class="expandable-content"><div class="expandable-inner bg-white/40 rounded-3xl p-5 mt-5 text-slate-700 shadow-inner text-sm">
-                    <p class="mb-2">Курение (включая электронные сигареты, IQOS и прочее) на территории общежития запрещено. Это касается комнат, коридоров, кухонь, санузлов, балконов и лестничных клеток.</p>
-                    <p class="mb-2">Для курения необходимо выходить за ограждение территории общежития, то есть <strong>за забор</strong>.</p>
-                    <p class="mb-2">В случае нарушения студент будет приглашён на комиссию в Главный корпус ЯрГу для назначения мер. На комиссии студент обязан предоставить объяснительную.</p>
-                    <p class="font-medium text-rose-600">Нарушение правил влечёт дисциплинарную ответственность вплоть до выселения.</p>
+                    <div data-lang="ru">
+                        <p class="mb-2">Курение (включая электронные сигареты) на территории запрещено. Это касается комнат, коридоров, кухонь, санузлов, балконов.</p>
+                        <p class="mb-2">Для курения необходимо выходить <strong>за забор</strong>.</p>
+                        <p class="font-medium text-rose-600">Нарушение влечёт ответственность вплоть до выселения.</p>
+                    </div>
+                    <div data-lang="en">
+                        <p class="mb-2">Smoking (including e-cigarettes) is prohibited on the premises: rooms, corridors, kitchens, bathrooms, balconies.</p>
+                        <p class="mb-2">You must go <strong>outside the fence</strong> to smoke.</p>
+                        <p class="font-medium text-rose-600">Violation leads to disciplinary action, up to eviction.</p>
+                    </div>
                 </div></div></div>
             </div>
-
         </div>
 
         <div class="liquid-card p-8 md:p-12 bg-gradient-to-br from-white/30 to-orange-50/40">
@@ -146,67 +161,68 @@
                 <div class="flex-1 space-y-6">
                     <div class="flex items-center gap-3">
                         <div class="text-3xl">🔥</div>
-                        <h2 class="text-3xl font-bold tracking-tight">Пожарная безопасность</h2>
+                        <h2 class="text-3xl font-bold tracking-tight"><span data-lang="ru">Пожарная безопасность</span><span data-lang="en">Fire Safety</span></h2>
                     </div>
                     <ul class="space-y-4 text-slate-700 font-medium">
-                        <li class="flex items-start gap-3"><span class="text-orange-500">•</span> План эвакуации на двери.</li>
-                        <li class="flex items-start gap-3"><span class="text-orange-500">•</span> Выключай технику из розеток.</li>
-                        <li class="flex items-start gap-3"><span class="text-orange-500">•</span> Используй только заводские сетевые фильтры.</li>
+                        <li class="flex items-start gap-3"><span class="text-orange-500">•</span> <span data-lang="ru">План эвакуации на двери.</span><span data-lang="en">Evacuation plan on the door.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-orange-500">•</span> <span data-lang="ru">Выключай технику из розеток.</span><span data-lang="en">Unplug all appliances.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-orange-500">•</span> <span data-lang="ru">Используй только заводские сетевые фильтры.</span><span data-lang="en">Use only factory-made surge protectors.</span></li>
                     </ul>
-                    <button class="expand-btn inline-flex items-center gap-2 bg-orange-100/60 text-orange-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-orange-200 transition cursor-pointer" data-target="text-fire">Подробнее &darr;</button>
+                    <button class="expand-btn inline-flex items-center gap-2 bg-orange-100/60 text-orange-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-orange-200 transition cursor-pointer" data-target="text-fire"><span data-lang="ru">Подробнее &darr;</span><span data-lang="en">Read more &darr;</span></button>
                 </div>
                 <div class="bg-white/60 border border-white p-8 rounded-[30px] text-center w-full md:w-auto shadow-sm">
-                    <p class="text-sm text-slate-500 uppercase tracking-wide font-bold mb-2">Запах дыма?</p>
-                    <p class="text-slate-800 mb-2">Срочно на вахту или звони</p>
+                    <p class="text-sm text-slate-500 uppercase tracking-wide font-bold mb-2"><span data-lang="ru">Запах дыма?</span><span data-lang="en">Smell smoke?</span></p>
+                    <p class="text-slate-800 mb-2"><span data-lang="ru">Срочно на вахту или звони</span><span data-lang="en">Run to reception or call</span></p>
                     <div class="text-5xl font-extrabold text-orange-500 tracking-tighter">101 <span class="text-slate-300 font-light">/</span> 112</div>
                 </div>
             </div>
 
             <div id="text-fire" class="expandable-wrapper"><div class="expandable-content"><div class="expandable-inner bg-white/50 rounded-3xl p-6 mt-8 text-slate-700 leading-relaxed shadow-inner text-sm md:text-base">
-                <ul class="list-disc pl-5 space-y-2">
-                    <li>В каждой комнате на внутренней стороне двери размещён план эвакуации при пожаре. Ознакомьтесь с ним сразу после заселения.</li>
-                    <li>На кухне нельзя оставлять готовящуюся еду без присмотра.</li>
-                    <li>Электроприборы (чайники, микроволновки, зарядные устройства и т.п.) разрешается использовать только исправные на кухне. После использования обязательно выключайте их из розетки.</li>
-                    <li>Удлинители должны быть только заводского изготовления, с защитой от перегрузок (так называемые «сетевые фильтры»). Запрещается соединять несколько удлинителей последовательно («гирляндой»).</li>
-                    <li>При обнаружении запаха дыма, искрения или возгорания немедленно сообщите на вахту и вызовите пожарную службу по телефону <strong>101 или 112</strong>.</li>
+                <ul class="list-disc pl-5 space-y-2" data-lang="ru">
+                    <li>В каждой комнате размещён план эвакуации. Ознакомьтесь с ним.</li>
+                    <li>На кухне нельзя оставлять еду без присмотра.</li>
+                    <li>Электроприборы разрешается использовать только исправные на кухне.</li>
+                    <li>Удлинители должны быть заводскими. Нельзя соединять их «гирляндой».</li>
+                    <li>При дыме или огне срочно сообщите на вахту и звоните 101/112.</li>
+                </ul>
+                <ul class="list-disc pl-5 space-y-2" data-lang="en">
+                    <li>Read the evacuation plan located on your room door.</li>
+                    <li>Never leave cooking food unattended.</li>
+                    <li>Use only functional electrical appliances in the kitchen.</li>
+                    <li>Extension cords must be factory-made. Do not daisy-chain them.</li>
+                    <li>If you smell smoke or see fire, notify reception immediately and call 101 or 112.</li>
                 </ul>
             </div></div></div>
         </div>
 
         <div class="liquid-card p-8 md:p-10">
-            <h2 class="text-2xl font-bold mb-4 flex items-center gap-3"><span class="text-2xl">⚖️</span> Юридические вопросы</h2>
-            <p class="text-slate-700 mb-6">Договор найма, временная прописка, залог 5000 руб. и оплата.</p>
-            <button class="expand-btn inline-flex items-center gap-2 bg-slate-200/50 text-slate-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-slate-200 transition cursor-pointer" data-target="text-legal">Подробнее &darr;</button>
+            <h2 class="text-2xl font-bold mb-4 flex items-center gap-3"><span class="text-2xl">⚖️</span> <span data-lang="ru">Юридические вопросы</span><span data-lang="en">Legal Matters</span></h2>
+            <p class="text-slate-700 mb-6"><span data-lang="ru">Договор найма, прописка, залог и оплата.</span><span data-lang="en">Contract, registration, deposit, and payment.</span></p>
+            <button class="expand-btn inline-flex items-center gap-2 bg-slate-200/50 text-slate-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-slate-200 transition cursor-pointer" data-target="text-legal"><span data-lang="ru">Подробнее &darr;</span><span data-lang="en">Read more &darr;</span></button>
 
             <div id="text-legal" class="expandable-wrapper"><div class="expandable-content"><div class="expandable-inner bg-white/40 rounded-3xl p-6 mt-6 text-slate-700 shadow-inner text-sm md:text-base">
-                <div class="space-y-4">
-                    <div><strong class="text-slate-900">1. Договор найма:</strong> Оформляется в 3 экз. на весь срок. При утрате — в каб. 145. При выселении расторгается.</div>
-                    <div><strong class="text-slate-900">2. Временная регистрация (прописка):</strong> Оформляется обязательно в каб. 145. Документ хранится у вас.</div>
-                    <div><strong class="text-slate-900">3. Залог и оплата:</strong>
-                        <ul class="list-disc pl-5 mt-1 space-y-1">
-                            <li>Залог 5000 руб. по квитанции (возвращается при выселении, если нет долгов и порчи).</li>
-                            <li>Плата вносится каждые полгода по квитанциям на почту.</li>
-                            <li>Трудности с оплатой решаются в бухгалтерии в Главном корпусе или по номеру <a href="tel:427017" class="hover:underline">79-77-43</a>. За неоплату без предупреждения — ответственность.</li>
-                        </ul>
-                    </div>
-                    <div><strong class="text-slate-900">4. Порядок выселения:</strong>
-                        <ul class="list-disc pl-5 mt-1 space-y-1">
-                            <li>Расторгнуть договор, подать заявление на возврат залога.</li>
-                            <li>Подписать акт сдачи мебели/комнаты и сдать белье кастелянше.</li>
-                            <li>На выезд дается обычно 2 дня.</li>
-                        </ul>
-                    </div>
+                <div class="space-y-4" data-lang="ru">
+                    <div><strong class="text-slate-900">1. Договор:</strong> Оформляется в 3 экз. При утрате — в каб. 145.</div>
+                    <div><strong class="text-slate-900">2. Прописка:</strong> Оформляется обязательно в каб. 145.</div>
+                    <div><strong class="text-slate-900">3. Оплата и Залог:</strong> Залог 5000 руб. Плата каждые полгода на почте. Проблемы — <a href="tel:427017">79-77-43</a>.</div>
+                    <div><strong class="text-slate-900">4. Выселение:</strong> Расторгнуть договор, сдать акт и белье. На выезд 2 дня.</div>
+                </div>
+                <div class="space-y-4" data-lang="en">
+                    <div><strong class="text-slate-900">1. Contract:</strong> 3 copies. Lost copies can be retrieved in Room 145.</div>
+                    <div><strong class="text-slate-900">2. Registration:</strong> Mandatory registration in Room 145.</div>
+                    <div><strong class="text-slate-900">3. Payment & Deposit:</strong> 5000 RUB deposit. Rent paid every 6 months at post office. Issues: <a href="tel:427017">79-77-43</a>.</div>
+                    <div><strong class="text-slate-900">4. Eviction:</strong> Terminate contract, submit checkout act, return linen. You have 2 days to move out.</div>
                 </div>
             </div></div></div>
         </div>
     </main>
 
     <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 liquid-nav p-2 md:px-4 md:py-3 flex items-center gap-2 w-max shadow-xl">
-        <a href="index.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">🏠</span><span class="hidden md:block">Главная</span></a>
-        <a href="rules.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-semibold text-slate-700 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">📜</span><span class="hidden md:block">Правила</span></a>
-        <a href="life.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">🚿</span><span class="hidden md:block">Быт</span></a>
-        <a href="schedule.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">🔑</span><span class="hidden md:block">Доступ</span></a>
-        <a href="contacts.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">📞</span><span class="hidden md:block">Контакты</span></a>
+        <a href="index.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">🏠</span><span class="hidden md:block"><span data-lang="ru">Главная</span><span data-lang="en">Home</span></span></a>
+        <a href="rules.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-semibold text-slate-700 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">📜</span><span class="hidden md:block"><span data-lang="ru">Правила</span><span data-lang="en">Rules</span></span></a>
+        <a href="life.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">🚿</span><span class="hidden md:block"><span data-lang="ru">Быт</span><span data-lang="en">Life</span></span></a>
+        <a href="schedule.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">🔑</span><span class="hidden md:block"><span data-lang="ru">Доступ</span><span data-lang="en">Access</span></span></a>
+        <a href="contacts.html" class="nav-link p-3 md:px-5 md:py-2.5 rounded-full flex items-center justify-center gap-2 text-sm font-medium text-slate-600 whitespace-nowrap"><span class="text-xl md:text-lg leading-none">📞</span><span class="hidden md:block"><span data-lang="ru">Контакты</span><span data-lang="en">Contacts</span></span></a>
     </nav>
     <script src="script.js"></script>
 </body>
