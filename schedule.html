@@ -16,12 +16,20 @@
 <body class="pb-32 relative">
     <div class="blob-bg"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
 
+    <!-- Switchers -->
     <div class="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-3">
-        <button id="lang-toggle" class="flex items-center justify-center w-[40px] h-[34px] rounded-full bg-white/50 dark:bg-slate-800/80 backdrop-blur-md border border-white/80 dark:border-white/10 shadow-sm text-sm font-bold text-slate-700 dark:text-slate-200 transition-transform hover:scale-105">EN</button>
+
+        <!-- Кнопка смены языка -->
+        <button id="lang-toggle" class="lang-btn" title="Сменить язык / Change language">
+            RU
+        </button>
+
+        <!-- Тумблер темы -->
         <label class="theme-switch" title="Toggle theme">
             <input type="checkbox" id="theme-checkbox">
             <div class="slider"><span class="icon">☀️</span><span class="icon">🌙</span></div>
         </label>
+
     </div>
 
     <main id="main-content" class="page-transition max-w-4xl mx-auto px-6 pt-16 space-y-8">
