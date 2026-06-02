@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (initialLangBtn) initialLangBtn.innerText = currentLang === 'en' ? 'RU' : 'EN';
 
     function initPageLogic() {
-        // Логика кнопок "Подробнее" (теперь двуязычная)
+        // Логика кнопок "Подробнее"
         const expandButtons = document.querySelectorAll('.expand-btn');
         expandButtons.forEach(btn => {
             const newBtn = btn.cloneNode(true);
@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Пасхалка 2
         const kitchenEmoji = document.getElementById('easter-egg-kitchen');
         if (kitchenEmoji) {
             const newKitchenEmoji = kitchenEmoji.cloneNode(true);
@@ -88,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             newKitchenEmoji.addEventListener('click', () => {
                 kitchenClicks++;
                 if (kitchenClicks === 4) {
-                    window.open('https://radika1.link/2026/03/31/DANYd3c11b485608dc77.jpg', '_blank');
+                    window.open('https://clck.su/nKGyC', '_blank');
                     kitchenClicks = 0;
                 }
             });
@@ -178,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentUrl === 'contacts.html') {
                 themeSwitchCount++;
                 if (themeSwitchCount === 10) {
-                    window.open('https://radika1.link/2026/03/31/7FC36A8A-F32F-459D-9613-5AD6EDA9BA92_1_105_c294db6f3a700fbe4.jpeg', '_blank');
+                    window.open('https://clck.su/TNYnQ', '_blank');
                     themeSwitchCount = 0;
                 }
             } else { themeSwitchCount = 0; }
